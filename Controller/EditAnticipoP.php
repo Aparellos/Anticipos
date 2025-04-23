@@ -23,8 +23,8 @@ use FacturaScripts\Core\Tools;
 use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
 use FacturaScripts\Core\Lib\ExtendedController\BaseView;
 use FacturaScripts\Core\Lib\ExtendedController\EditController;
-use FacturaScripts\Core\Model\AlbaranProveedor;
-use FacturaScripts\Plugins\Anticipos\Extension\Controller\EditAlbaranProveedor;
+use FacturaScripts\Core\Model\AlbaranProovedor;
+
 
 /**
  * Description of EditAnticipoP
@@ -97,7 +97,7 @@ class EditAnticipoP extends EditController
 
                     // si viene de un albarán, asignar importe
                     if (!empty($model->idalbaran)) {
-                        $delivery = new EditAlbaranProveedor();
+                        $delivery = new AlbaranProovedor();
                         $delivery->loadFromCode($model->idalbaran);
                         $model->importe = $delivery->total;
                     }
