@@ -2,7 +2,6 @@
     "advance-linked-to": "Anticipo vinculado a",
     "advance-not-linked": "Vorschuss #%idAnticipo% noch nicht mit einem Dokument verknüpft",
     "advance-not-linked-list": "Ohne Verlinkung auf ein Dokument",
-    "advance-payment": "Vorschuss",
     "advance-payment-c": "Vorschuss Cli",
     "advance-payment-invalid-client-delivery-note": "Der Kunde des Vorschusses stimmt nicht mit dem Kunden des Lieferscheins überein",
     "advance-payment-invalid-client-estimation": "Der Kunde des Vorschusses stimmt nicht mit dem Kunden des Kostenvoranschlags überein",

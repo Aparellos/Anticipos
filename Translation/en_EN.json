@@ -2,7 +2,6 @@
     "advance-linked-to": "Advance linked to",
     "advance-not-linked": "Advance #%idAnticipo% pending linking with a Document",
     "advance-not-linked-list": "Without Linking to a Document",
-    "advance-payment": "Advanced payment",
     "advance-payment-c": "Customer advance payment",
     "advance-payment-invalid-client-delivery-note": "The client of the advance does not coincide with the client of the delivery note",
     "advance-payment-invalid-client-estimation": "The client of the advance does not match the client of the budget",

@@ -2,7 +2,6 @@
     "advance-linked-to": "Zaliczka powiązana z",
     "advance-not-linked": "Zaliczka #%idZaliczka% oczekuje na powiązanie z dokumentem",
     "advance-not-linked-list": "Bez łącza do dokumentu",
-    "advance-payment": "Zaliczka",
     "advance-payment-c": "Zaliczka Cli",
     "advance-payment-invalid-client-delivery-note": "Klient wpłaty zaliczki nie zgadza się z klientem na liście przewozowym",
     "advance-payment-invalid-client-estimation": "Klient zaliczki nie zgadza się z klientem w oszacowaniu",

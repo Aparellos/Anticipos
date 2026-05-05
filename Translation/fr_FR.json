@@ -2,7 +2,6 @@
     "advance-linked-to": "Anticipo vinculado a",
     "advance-not-linked": "Advance #%idAnticipo% en attente de liaison avec un document",
     "advance-not-linked-list": "Sans lien vers un document",
-    "advance-payment": "Paiement anticipé",
     "advance-payment-c": "Avance Cli.",
     "advance-payment-invalid-client-delivery-note": "Le client du paiement anticipé ne coïncide pas avec le client du bon de livraison",
     "advance-payment-invalid-client-estimation": "Le client du paiement anticipé ne correspond pas au client du budget",

@@ -2,7 +2,6 @@
     "advance-linked-to": "Anticipo vinculado a",
     "advance-not-linked": "Pagamento anticipato #%idAnticipo% in attesa di collegamento a un documento",
     "advance-not-linked-list": "Senza Collegamento a un Documento",
-    "advance-payment": "Anticipo",
     "advance-payment-c": "Anticipo Cli",
     "advance-payment-invalid-client-delivery-note": "Il cliente del anticipo non corrisponde al cliente della bolla di consegna",
     "advance-payment-invalid-client-estimation": "Il cliente del anticipo non corrisponde al cliente del preventivo",
