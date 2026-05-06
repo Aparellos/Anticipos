@@ -118,11 +118,14 @@ trait AnticiposEditExtensionDocs
 						$where = [Where::eq('idempresa', $idempresa)];
 						$view->loadData('', $where);
 					}
-					
+
 					// se asigna el total del documento, como importe del anticipo
 					if (empty($model->importe)) {
 						$importe = $this->getViewModelValue($this->getMainViewName(), 'total');
-						$where = [Where::eq('importe', $importe)];
+						$where = [
+							Where::eq('importe', $importe),
+							Where::orNotEq('importe', $importe)
+						];
 						$view->loadData('', $where);
 					}
 
