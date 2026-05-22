@@ -94,6 +94,51 @@ class EditAnticipoP extends EditController
                 $modelExists = $model->exists();
                 if (false === $modelExists) {
 					$model->nick = $this->user->nick;
+
+					// pre-carrega o importe restante se for um anticipo novo
+					if (empty($model->importe)) {
+						$totalDoc = 0.00;
+						$totalAdvances = 0.00;
+						$modelClass = $this->getModelClassName();
+
+						if (!empty($model->idalbaran)) {
+							$doc = \FacturaScripts\Dinamic\Model\AlbaranProveedor::find($model->idalbaran);
+							if ($doc) {
+								$totalDoc = (float) $doc->total;
+								foreach ($modelClass::all([Where::eq('idalbaran', $model->idalbaran)]) as $adv) {
+									$totalAdvances += (float) $adv->importe;
+								}
+							}
+						} elseif (!empty($model->idpedido)) {
+							$doc = \FacturaScripts\Dinamic\Model\PedidoProveedor::find($model->idpedido);
+							if ($doc) {
+								$totalDoc = (float) $doc->total;
+								foreach ($modelClass::all([Where::eq('idpedido', $model->idpedido)]) as $adv) {
+									$totalAdvances += (float) $adv->importe;
+								}
+							}
+						} elseif (!empty($model->idpresupuesto)) {
+							$doc = \FacturaScripts\Dinamic\Model\PresupuestoProveedor::find($model->idpresupuesto);
+							if ($doc) {
+								$totalDoc = (float) $doc->total;
+								foreach ($modelClass::all([Where::eq('idpresupuesto', $model->idpresupuesto)]) as $adv) {
+									$totalAdvances += (float) $adv->importe;
+								}
+							}
+						} elseif (!empty($model->idfactura)) {
+							$doc = \FacturaScripts\Dinamic\Model\FacturaProveedor::find($model->idfactura);
+							if ($doc) {
+								$totalDoc = (float) $doc->total;
+								foreach ($modelClass::all([Where::eq('idfactura', $model->idfactura)]) as $adv) {
+									$totalAdvances += (float) $adv->importe;
+								}
+							}
+						}
+
+						if ($totalDoc > 0.00) {
+							$model->importe = max(0.00, round($totalDoc - $totalAdvances, 2));
+						}
+					}
                 }
 
                 // valores para el select de la fase

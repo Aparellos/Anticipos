@@ -119,23 +119,6 @@ trait AnticiposEditExtensionDocs
 						$view->loadData('', $where);
 					}
 
-					// se asigna el total restante del documento, como importe del anticipo
-					if (empty($model->importe)) {
-						$totalDoc = (float) $this->getViewModelValue($this->getMainViewName(), 'total');
-						$totalAdvances = 0.00;
-
-						$modelClass = $viewName === 'ListAnticipoP' ? AnticipoP::class : Anticipo::class;
-						foreach ($modelClass::all([Where::eq($modelpc, $codigo)]) as $anticipoSbj) {
-							$totalAdvances += (float) $anticipoSbj->importe;
-						}
-
-						$importe = max(0.00, round($totalDoc - $totalAdvances, 2));
-
-						// Añadimos el importe directamente al where de la vista después de cargar los datos.
-						// Esto evita interferir en la consulta SQL (solucionando el bug del OR lineal)
-						// y permite que el botón "+ Nuevo" siga capturando el importe por defecto.
-						$view->where[] = Where::eq('importe', $importe);
-					}
 
 					// si está activado el plugin Proyectos añadimos el idproyecto del documento
 					if (Plugins::isEnabled('Proyectos')) {
