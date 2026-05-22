@@ -119,9 +119,18 @@ trait AnticiposEditExtensionDocs
 						$view->loadData('', $where);
 					}
 
-					// se asigna el total del documento, como importe del anticipo
+					// se asigna el total restante del documento, como importe del anticipo
 					if (empty($model->importe)) {
-						$importe = $this->getViewModelValue($this->getMainViewName(), 'total');
+						$totalDoc = (float) $this->getViewModelValue($this->getMainViewName(), 'total');
+						$totalAdvances = 0.00;
+
+						$modelClass = $viewName === 'ListAnticipoP' ? AnticipoP::class : Anticipo::class;
+						foreach ($modelClass::all([Where::eq($modelpc, $codigo)]) as $anticipoSbj) {
+							$totalAdvances += (float) $anticipoSbj->importe;
+						}
+
+						$importe = max(0.00, round($totalDoc - $totalAdvances, 2));
+
 						$where = [
 							Where::eq('importe', $importe),
 							Where::orNotEq('importe', $importe)
