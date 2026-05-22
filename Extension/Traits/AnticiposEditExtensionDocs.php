@@ -131,11 +131,10 @@ trait AnticiposEditExtensionDocs
 
 						$importe = max(0.00, round($totalDoc - $totalAdvances, 2));
 
-						$where = [
-							Where::eq('importe', $importe),
-							Where::orNotEq('importe', $importe)
-						];
-						$view->loadData('', $where);
+						// Añadimos el importe directamente al where de la vista después de cargar los datos.
+						// Esto evita interferir en la consulta SQL (solucionando el bug del OR lineal)
+						// y permite que el botón "+ Nuevo" siga capturando el importe por defecto.
+						$view->where[] = Where::eq('importe', $importe);
 					}
 
 					// si está activado el plugin Proyectos añadimos el idproyecto del documento
