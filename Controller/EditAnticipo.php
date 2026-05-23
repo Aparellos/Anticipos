@@ -99,7 +99,7 @@ class EditAnticipo extends EditController
 					if (empty($model->importe)) {
 						$totalDoc = 0.00;
 						$totalAdvances = 0.00;
-						$modelClass = $this->getModelClassName();
+						$modelClass = get_class($model);
 
 						if (!empty($model->idalbaran)) {
 							$doc = \FacturaScripts\Dinamic\Model\AlbaranCliente::find($model->idalbaran);
