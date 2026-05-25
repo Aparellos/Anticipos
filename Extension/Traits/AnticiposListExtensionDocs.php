@@ -39,9 +39,11 @@ trait AnticiposListExtensionDocs
 				['label' => Tools::trans('advances-status'), 'where' => []],
 				['label' => Tools::trans('with-advances'), 'where' => [Where::gt('advance', 0)]],
 				['label' => Tools::trans('without-advances'), 'where' => [
-							Where::isNull('advance'),
-							Where::orEq('advance', 0),
-					]],
+					Where::sub([
+						Where::isNull('advance'),
+						Where::orEq('advance', 0),
+					]),
+				]],
 			]);
 		};
 	}
